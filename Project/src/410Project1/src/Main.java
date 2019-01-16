@@ -11,21 +11,21 @@ public class Main {
         DataInputStream data = new DataInputStream(new FileInputStream(
                 "/Users/ud2131te/Documents/410Project1/src/File.dat"));
 
-//        while (data.available() > 0) {
-//            String line = data.readLine();
-//            temp_array = line.split(Delimeter);
-//            BreakArray(temp_array);
-//        }
+              while (data.available() > 0) {
+                    String line = data.readLine();
+                    temp_array = line.split(Delimeter);
+                    BreakArray(temp_array);
+            }
 
         data.close();
     }
 
-//    public  static void BreakArray(String[] a){
-//        String[] Titles = {"Address: ","Street: ","City: ","Zip: "};
-//
-//        for (int i = 0; i < a.length; i++) {
-//            System.out.println(Titles[i] + a[i]);
-//        }
+        public  static void BreakArray(String[] a){
+          String[] Titles = {"Address: ","Street: ","City: ","Zip: "};
+  
+          for (int i = 0; i < a.length; i++) {
+              System.out.println(Titles[i] + a[i]);
+          }
 
     }
 
