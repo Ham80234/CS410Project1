@@ -1,40 +1,52 @@
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 
 public class Main {
 
     private static String Delimeter = ",";
-    private static ArrayList<String> temp_array = new ArrayList<String>();
+    private static List<String> Addresses = new ArrayList<String>();
+    private static List<String> Streets = new ArrayList<String>();
+    private static List<String> VStreets = new ArrayList<String>();
+    private static List<String> HStreets = new ArrayList<String>();
+
+
+
 
 
 
 
     public static void main(String[] args) throws IOException{
-     ReadData("/Users/ud2131te/Documents/410Project1/src/File.dat");
-     ReadData("/Users/ud2131te/Documents/410Project1/src/Layout.dat");
+     ReadData("/Users/ud2131te/Documents/410Project1/src/File.dat", Addresses);
+     ReadData("/Users/ud2131te/Documents/410Project1/src/Layout.dat", Streets);
+     SetStreets();
     }
 
-    private static void ReadData(String Path) throws IOException{
+    private static void ReadData(String Path, List<String> Array) throws IOException{
         DataInputStream data = new DataInputStream(new FileInputStream(
                 Path));
         int Counter = 0;
         while (data.available() > 0) {
             String line = data.readLine();
-            temp_array.add(line);
+            Array.add(line);
             Counter++;
         }
-        print(temp_array);
+        //print(Array);
         data.close();
     }
 
-    public static ArrayList<String> FindRoute(String Start, String End){
-        ArrayList<String> Route = new ArrayList<String>();
+    private static void SetStreets(String Zip){
+        int Start_index, End_index;
+
+    }
+    public static List<String> FindRoute(String Start, String End){
+        List<String> Route = new ArrayList<String>();
         return Route;
     }
 
-    public static void print(ArrayList<String> route){
+    public static void print(List<String> route){
         for (int i = 0; i < route.size(); i++) {
             System.out.println(route.get(i));
         }
