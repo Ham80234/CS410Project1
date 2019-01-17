@@ -6,6 +6,11 @@ Template:
   What Was Done 
   Name 
 -------------------------------------------------------------------------------------------------------------------------------
+1/17/2019
+Changed the code to use Lists instead of ArrayLists so that we can break the Verticle and horizontal Streets unsing .subList()
+Andrew Hamlett
+
+
 1/16/2019
 Added Boiler plate code to make it scalable to a larger number 
 Andrew Hamlett
