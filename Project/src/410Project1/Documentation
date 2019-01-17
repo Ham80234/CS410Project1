@@ -6,9 +6,11 @@ Template:
   What Was Done 
   Name 
 -------------------------------------------------------------------------------------------------------------------------------
-
-
 1/16/2019
+Added Boiler plate code to make it scalable to a larger number 
+Andrew Hamlett
+
+1/16/2019 - 
 Created main.java takes in the Address.dat file and breakArray breaks the line pulled in, into its many parts
 Andrew Hamlett
 
