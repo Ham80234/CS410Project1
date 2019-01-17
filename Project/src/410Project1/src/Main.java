@@ -13,6 +13,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException{
      ReadData("/Users/ud2131te/Documents/410Project1/src/File.dat");
+     ReadData("/Users/ud2131te/Documents/410Project1/src/Layout.dat");
     }
 
     private static void ReadData(String Path) throws IOException{
@@ -24,26 +25,12 @@ public class Main {
             temp_array.add(line);
             Counter++;
         }
-        
-
-
+        print(temp_array);
         data.close();
-    }
-
-    private static void BreakArray(String[] a){
-        String[] Titles = {"Address: ","Street: ","City: ","Zip: "};
-
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(Titles[i] + a[i]);
-        }
-
     }
 
     public static ArrayList<String> FindRoute(String Start, String End){
         ArrayList<String> Route = new ArrayList<String>();
-
-
-
         return Route;
     }
 
