@@ -6,6 +6,11 @@ Template:
   What Was Done 
   Name 
 -------------------------------------------------------------------------------------------------------------------------------
+1/21/2019
+Added a methode to find the Horizontal and Verticle Streets in a list
+  Worked on a method to figure organize the streets in order for sorting of addresses but first iteration didnt work correctly 
+Andrew Hamlett 
+
 1/17/2019
 Changed the code to use Lists instead of ArrayLists so that we can break the Verticle and horizontal Streets unsing .subList()
 Andrew Hamlett
