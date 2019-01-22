@@ -6,9 +6,13 @@ Template:
   What Was Done 
   Name 
 -------------------------------------------------------------------------------------------------------------------------------
+1/22/2019
+Added a method that breaks an streets based on what city they are in
+Andrew Hamlett
+
 1/21/2019
 Added a methode to find the Horizontal and Verticle Streets in a list
-  Worked on a method to figure organize the streets in order for sorting of addresses but first iteration didnt work correctly 
+Worked on a method to figure organize the streets in order for sorting of addresses but first iteration didnt work correctly 
 Andrew Hamlett 
 
 1/17/2019
