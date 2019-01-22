@@ -1,5 +1,4 @@
-import java.awt.*;
-import java.beans.VetoableChangeListener;
+i
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +9,7 @@ import java.util.ListIterator;
 public class Main {
 
     private static String Delimeter = ",";
+
     private static List<String> Addresses = new ArrayList<String>();
     private static List<String> Streets = new ArrayList<String>();
     private static List<String> WinonaStreets = new ArrayList<String>();
@@ -21,8 +21,9 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException{
-     ReadData("/Users/ud2131te/Documents/410Project1/src/File.dat", Addresses);
-     ReadData("/Users/ud2131te/Documents/410Project1/src/Layout.dat", Streets);
+
+     ReadData("/Users/ud2131te/Documents/410Project1/src/Files/File.dat", Addresses);
+     ReadData("/Users/ud2131te/Documents/410Project1/src/Files/Layout.dat", Streets);
      OrderStreets("55987");
      SplitAddress();
 
@@ -87,7 +88,7 @@ public class Main {
     private static void SplitAddress(){
         for (int i = 0; i < Addresses.size(); i++) {
             String breaker = Addresses.get(i);
-            String[] parts = breaker.split(",");
+            String[] parts = breaker.split(Delimeter);
 
             if(parts[3].equals("55987")){
                 WinonaStreets.add(Addresses.get(i));
@@ -96,7 +97,7 @@ public class Main {
                RochesterStreets.add(Addresses.get(i));
             }
         }
-        
+
     }
 
     private static List<String> FindRoute(){
@@ -109,6 +110,21 @@ public class Main {
 
 
 
+        return Route;
+    }
+
+    private static String FindStreet(String Address){
+        String[] add = Address.split(Delimeter);
+        return add[1];
+
+    }
+
+    private static void print(List<String> route){
+        for (int i = 0; i < route.size(); i++) {
+            System.out.println(route.get(i));
+        }
+    }
+}
         return Route;
     }
 
