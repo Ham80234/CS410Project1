@@ -6,6 +6,14 @@ Template:
   What Was Done 
   Name 
 -------------------------------------------------------------------------------------------------------------------------------
+1/28/2019
+Added a testing method that we can use to make alot of fake addresses
+Andrew Hamlett 
+
+1/26/2019
+Added Find Route Method needs to be rewritten to be faster 
+Andrew Hamlett
+
 1/22/2019
 Added a method that breaks an streets based on what city they are in
 Andrew Hamlett
