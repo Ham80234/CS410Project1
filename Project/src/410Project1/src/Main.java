@@ -1,24 +1,25 @@
-i
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.channels.Selector;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Random;
+
 
 public class Main {
 
     private static String Delimeter = ",";
-
+    private static List<String> TestAddresses=  new ArrayList<String>();
     private static List<String> Addresses = new ArrayList<String>();
-    private static List<String> Streets = new ArrayList<String>();
+    protected static List<String> Streets = new ArrayList<String>();
     private static List<String> WinonaStreets = new ArrayList<String>();
     private static List<String> RochesterStreets = new ArrayList<String>();
 
 
     private static List<String> Vert = new ArrayList<String>();
     private static List<String> Horizontal = new ArrayList<String>();
-
 
     public static void main(String[] args) throws IOException{
 
@@ -28,6 +29,7 @@ public class Main {
      SplitAddress();
 
 
+print(FindRoute( CreateTeastData(30, 55910)));
     }
 
     private static void ReadData(String Path, List<String> Array) throws IOException{
@@ -65,8 +67,7 @@ public class Main {
                 }
 
             }
-        }else
-        if(Zip.equals("55910")){
+        }else if(Zip.equals("55910")){
             for (int i = 0; i < Streets.size(); i++) {
                 if(Streets.get(i).equals(RochesterV)){
                     VStart = i+2;
@@ -85,6 +86,7 @@ public class Main {
         Vert = Streets.subList(VStart-1, VEnd+1);
         Horizontal = Streets.subList(HStart, HEnd+1);
     }
+
     private static void SplitAddress(){
         for (int i = 0; i < Addresses.size(); i++) {
             String breaker = Addresses.get(i);
@@ -100,43 +102,83 @@ public class Main {
 
     }
 
-    private static List<String> FindRoute(){
+    private static List<String> FindRoute(List<String> list) {
         List<String> Route = new ArrayList<String>();
-        ListIterator<String> Vlitr = null;
-        ListIterator<String> Hlitr = null;
-
-        Vlitr = Vert.listIterator();
-        Hlitr = Horizontal.listIterator();
-
+        List<String> Weaved = new ArrayList<String>();
+        ListIterator<String> Vlitr = Vert.listIterator();
+        ;
+        ListIterator<String> Hlitr = Horizontal.listIterator();
 
 
+
+        List<String> Temp;
+
+
+        Temp = (Vert.size() > Horizontal.size()) ? Vert : Horizontal;
+
+        for (int i = 0; i < Temp.size(); i++) {
+            if(i <= Vert.size()-1){
+                Weaved.add(Vert.get(i));
+            }
+            if(i <= Horizontal.size()-1){
+                Weaved.add(Horizontal.get(i));
+            }
+        }
+
+        for (int i = 0; i < Weaved.size(); i++) {
+            String CurrentWeave =  Weaved.get(i);
+            for (int j = 0; j < list.size(); j++) {
+                String Current = FindStreet(list.get(j));
+                if(FindStreet(list.get(j)).equals(Weaved.get(i))){
+                    Route.add(list.get(j));
+                }
+            }
+        }
+        
         return Route;
     }
 
-    private static String FindStreet(String Address){
-        String[] add = Address.split(Delimeter);
-        return add[1];
 
-    }
+        private static String FindStreet (String Address){
+            String[] add = Address.split(Delimeter);
 
-    private static void print(List<String> route){
-        for (int i = 0; i < route.size(); i++) {
-            System.out.println(route.get(i));
+            return add[1];
+
         }
-    }
-}
-        return Route;
-    }
 
-    private static String FindStreet(String Address){
-        String[] add = Address.split(",");
-        return add[1];
-
-    }
-
-    private static void print(List<String> route){
-        for (int i = 0; i < route.size(); i++) {
-            System.out.println(route.get(i));
+        private static void print (List < String > route) {
+            for (int i = 0; i < route.size(); i++) {
+                System.out.println(route.get(i));
+            }
         }
-    }
+
+
+        private static List<String> CreateTeastData(int amount, int Zip){
+            List<String> TestData = new ArrayList<String>();
+            int Nums = 0, Hov, Selector;
+            String Street = null, City = null;
+
+            if(Zip == 55987){
+                City = "Winona";
+                OrderStreets("55987");
+            }
+            if(Zip == 55910){
+                City = "Rochester";
+                OrderStreets("55910");
+            }
+
+            for (int i = 0; i < amount; i++) {
+                Random rand = new Random();
+                Hov = rand.nextInt(2);
+                Nums = rand.nextInt(899) + 100;
+                Selector = Hov < 1 ? rand.nextInt(Vert.size()-1) : rand.nextInt(Horizontal.size()-1);
+                Street =  Hov < 1 ? Vert.get(Selector) : Horizontal.get(Selector);
+
+                String Address = Nums + "," + Street + "," + City + "," + Zip;
+                TestData.add(Address);
+            }
+            return TestData;
+        }
+
+
 }
